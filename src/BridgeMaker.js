@@ -3,7 +3,6 @@
  */
  const inputView = require('./InputView');
  const generator = require('./BridgeRandomNumberGenerator');
-const { getBridgeSize } = require('./InputView');
 const OutputView = require('./OutputView');
 
  

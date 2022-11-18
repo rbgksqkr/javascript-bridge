@@ -27,3 +27,15 @@
 - 현재까지 건넌 다리를 모두 출력
 - 다리를 건너다 실패하면 게임을 재시작하거나 종료할 수 있다.
 - 다리를 끝까지 건너면 게임이 종료된다.
+
+# 프로그램 실행 흐름
+1. 다리 길이를 입력받는다. - inputView
+2. 다리 길이만큼 랜덤값을 이용해 'D', 'U' 값이 담긴 다리 생성. - BridgeMaker, BridgeRandomNumberGenerator
+3. 이동할 칸 입력받는다. 위 : U, 아래 : D - InputView
+4. 한 칸씩 이동. BridgeGame
+5. 성공하면 O, 실패하면 X를 출력 형식에 맞게 이동한 칸에 출력. - OutputView
+6. 성공하면 3-5 반복, 실패하면 끝. - BridgeGame
+7. 실패하면 최종 게임 결과 출력 후, - OutputView
+8. 재시작/종료 여부를 입력받는다. - InputView
+9. 재시작하면 처음에 만든 다리를 재사용. - BridgeGame
+9. 다리를 건너는 데 성공하거나 실패 후 종료했을 때 최종 게임 결과 출력. - OutputView
