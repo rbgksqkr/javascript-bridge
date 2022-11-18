@@ -9,12 +9,12 @@ const OutputView = {
    */
   printMap(bridge) {
     console.log(bridge);
+    const start = '[ ';
+    const end = ' ]';
+    const delimiter = ' | ';
       if(bridge.length === 1) {
-        MissionUtils.Console.print('[  ]');
-        MissionUtils.Console.print('[  ]');
-      } else if(bridge.length > 1) {
-        MissionUtils.Console.print('[  |  ]');
-        MissionUtils.Console.print('[  |  ]');
+        MissionUtils.Console.print(start+end);
+        MissionUtils.Console.print(start+end);
       }
   },
 
