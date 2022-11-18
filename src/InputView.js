@@ -2,6 +2,7 @@
  * 사용자로부터 입력을 받는 역할을 한다.
  */
 const InputView = {
+  bridgeSize : 0,
   /**
    * 다리의 길이를 입력받는다.
    */
@@ -9,6 +10,7 @@ const InputView = {
     MissionUtils.Console.print('다리 건너기 게임을 시작합니다.\n');
     MissionUtils.Console.readLine('다리의 길이를 입력해주세요.\n', (bridgeSize) => {
       console.log(`다리의 길이: ${bridgeSize}`);
+      this.bridgeSize = bridgeSize;
     });
   },
 
@@ -35,6 +37,6 @@ const InputView = {
 const MissionUtils = require("@woowacourse/mission-utils");
 // InputView.readBridgeSize();
 // InputView.readMoving();
-InputView.readGameCommand();
+// InputView.readGameCommand();
 
 module.exports = InputView;
