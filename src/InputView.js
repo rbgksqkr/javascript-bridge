@@ -44,7 +44,6 @@ const InputView = {
       }
       if(answer === 'R') {
         this.readMoving(this.bridges, 0);
-        return;
       }
     });
   },
