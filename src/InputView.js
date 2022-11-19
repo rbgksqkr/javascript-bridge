@@ -23,7 +23,7 @@ const InputView = {
     MissionUtils.Console.readLine('이동할 칸을 선택해주세요. (위: U, 아래: D)\n', (inputMove) => {
       OutputView.printMap(inputMove, bridges[nowIndex]);
       if(nowIndex === bridges.length-1){
-        // OutputView.printResult();
+        OutputView.printResult();
         return;
       }
       if(inputMove === bridges[nowIndex]) {
@@ -40,7 +40,7 @@ const InputView = {
     MissionUtils.Console.readLine('게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n', (answer) => {
       if(answer === 'Q') {
         // OutputView.printResult();
-        return;
+        MissionUtils.Console.close();
       }
       if(answer === 'R') {
         this.readMoving(this.bridges, 0);
