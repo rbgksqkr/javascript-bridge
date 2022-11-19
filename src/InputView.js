@@ -19,14 +19,17 @@ const InputView = {
   /**
    * 사용자가 이동할 칸을 입력받는다.
    */
-  readMoving(answer) {
+  readMoving(bridges, nowIndex) {
     MissionUtils.Console.readLine('이동할 칸을 선택해주세요. (위: U, 아래: D)\n', (inputMove) => {
+      if(nowIndex === bridges.length) {
+        return;
+      }
       console.log(`이동할 칸: ${inputMove}`);
-      if(inputMove === answer) {
-        console.log("!", answer);
+      if(inputMove === bridges[nowIndex]) {
+        console.log("!", bridges, bridges[nowIndex]);
         // OutputView.printMap();
       }
-      // bridgeGame.move();
+      this.readMoving(bridges, ++nowIndex);
     });
   },
 
