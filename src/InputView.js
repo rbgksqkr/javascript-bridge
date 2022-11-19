@@ -2,16 +2,16 @@
  * 사용자로부터 입력을 받는 역할을 한다.
  */
 const InputView = {
+  bridges: [],
   /**
    * 다리의 길이를 입력받는다.
    */
   readBridgeSize() {
     MissionUtils.Console.print('다리 건너기 게임을 시작합니다.\n');
     MissionUtils.Console.readLine('다리의 길이를 입력해주세요.\n', (bridgeSize) => {
-      console.log(`다리의 길이: ${bridgeSize}`);
-      const bridges = bridgeMaker.makeBridge(bridgeSize, generator.generate);
-      console.log(bridges);
-      const bridgeGame = new BridgeGame(bridges);
+      this.bridges = bridgeMaker.makeBridge(bridgeSize, generator.generate);
+      console.log(this.bridges);
+      const bridgeGame = new BridgeGame(this.bridges);
       bridgeGame.move();
     });
   },
@@ -21,15 +21,15 @@ const InputView = {
    */
   readMoving(bridges, nowIndex) {
     MissionUtils.Console.readLine('이동할 칸을 선택해주세요. (위: U, 아래: D)\n', (inputMove) => {
-      if(nowIndex === bridges.length) {
+      OutputView.printMap(inputMove, bridges[nowIndex]);
+      if(nowIndex === bridges.length-1){
+        // OutputView.printResult();
         return;
       }
-      console.log(`이동할 칸: ${inputMove}`);
       if(inputMove === bridges[nowIndex]) {
-        console.log("!", bridges, bridges[nowIndex]);
-        // OutputView.printMap();
+        this.readMoving(bridges, ++nowIndex);
       }
-      this.readMoving(bridges, ++nowIndex);
+      this.readGameCommand();
     });
   },
 
@@ -38,7 +38,14 @@ const InputView = {
    */
   readGameCommand() {
     MissionUtils.Console.readLine('게임을 다시 시도할지 여부를 입력해주세요. (재시도: R, 종료: Q)\n', (answer) => {
-      console.log(`answer: ${answer}`);
+      if(answer === 'Q') {
+        // OutputView.printResult();
+        return;
+      }
+      if(answer === 'R') {
+        this.readMoving(this.bridges, 0);
+        return;
+      }
     });
   },
 };
